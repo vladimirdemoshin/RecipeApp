@@ -1,18 +1,12 @@
-export default function RecipeList() {
-    const recipes = [
-        {
-            id: 1,
-            title: "Pizza"
-        },
-        {
-            id: 2,
-            title: "Pasta with salmon"
-        },
-    ];
+import Recipe from "@/app/lib/models/recipe";
+import { fetchRecipes } from "@/app/lib/webApi";
+
+export default async function RecipeList() {
+    const data: Recipe[] = await fetchRecipes();
     return (
         <>
             {
-                recipes.map(r =>
+                data.map(r =>
                     <div>{r.title}</div>
                 )
             }
