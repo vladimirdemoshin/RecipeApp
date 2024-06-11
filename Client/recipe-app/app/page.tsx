@@ -1,12 +1,15 @@
 import RecipeList from "@/app/ui/recipe-list";
-import { Suspense } from "react";
+import { fetchRecipes } from "./lib/webApi";
+import Recipe from "./lib/models/recipe";
 
 export default async function Home() {
+  const recipes: Recipe[] = await fetchRecipes();
+  console.log(recipes);
   return (
     <>
-      <Suspense>
-          <RecipeList/>
-      </Suspense>
+      <div>
+        <RecipeList recipes={recipes}></RecipeList>
+      </div>
     </>
   );
 }

@@ -1,12 +1,27 @@
-import Recipe from "@/app/lib/models/recipe";
-import { fetchRecipes } from "@/app/lib/webApi";
+'use client'
 
-export default async function RecipeList() {
-    const data: Recipe[] = await fetchRecipes();
+import Recipe from "@/app/lib/models/recipe";
+import styles from '@/app/ui/styles/recipes.module.css';
+import { addRecipe } from "../lib/webApi";
+
+export interface RecipeListProps {
+    recipes: Recipe[]
+}
+
+export default function RecipeList({
+    recipes
+}: RecipeListProps) {
     return (
         <>
+            <button className={styles.add_button} onClick={() => {
+                addRecipe().then((response) => {
+                    console.log('added', response);
+                });
+            }}>
+                Add receipt
+            </button>
             {
-                data.map(r =>
+                recipes.map(r =>
                     <div>{r.title}</div>
                 )
             }

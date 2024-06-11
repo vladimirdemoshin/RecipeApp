@@ -16,5 +16,11 @@ namespace RecipeApp.WebAPI.Controllers
                 new RecipeModel("2", "Pasta with salmon"),
             };
         }
+
+        [HttpPost(Name = "AddRecipes")]
+        public async Task<OkResult> PostAsync()
+        {
+            return await Task.FromResult(Ok());
+        }
     }
 }
