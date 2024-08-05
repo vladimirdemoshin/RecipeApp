@@ -1,3 +1,23 @@
 .add_button {
     background-color: red;
 }
+
+.recipes_list {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+    padding-top: 200px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.recipe_preview {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    border: 1px solid blue;
+    background-color: lightblue;
+    width: 100%;
+    margin-bottom: 10px;
+}
