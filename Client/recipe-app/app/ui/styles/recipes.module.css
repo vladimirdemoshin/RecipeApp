@@ -2,12 +2,32 @@
     background-color: red;
 }
 
+.recipes_page {
+    display: flex;
+    flex-direction: row;
+    padding-top: 200px;
+}
+
+.recipes_menu {
+    flex-grow: 1;
+    background: lightcoral;
+}
+
+.recipes_actions {
+    flex-grow: 1;
+    background: lightgreen;
+
+    .add_button {
+        background-color: rebeccapurple;
+        width: 200px;
+        height: 200px;
+    }
+}
+
 .recipes_list {
     display: flex;
+    flex-grow: 4;
     flex-direction: column;
-    width: 50%;
-    margin: auto;
-    padding-top: 200px;
     border-left: 1px solid black;
     border-right: 1px solid black;
 }

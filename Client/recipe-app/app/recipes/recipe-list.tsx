@@ -14,18 +14,18 @@ export default function RecipeList({
 }: RecipeListProps) {
     return (
         <div className={styles.recipes_list}>
-            {/* <button className={styles.add_button} onClick={() => {
-                addRecipe().then((response) => {
-                    console.log('added', response);
-                });
-            }}>
-                Add receipt
-            </button> */}
-            {
-                recipes.map(r =>
-                    <RecipePreview recipe={r}/>
-                )
-            }
+                {/* <button className={styles.add_button} onClick={() => {
+                    addRecipe().then((response) => {
+                        console.log('added', response);
+                    });
+                }}>
+                    Add receipt
+                </button> */}
+                {
+                    recipes.map(r =>
+                        <RecipePreview key={r.id} recipe={r}/>
+                    )
+                }
         </div>
     );
 }

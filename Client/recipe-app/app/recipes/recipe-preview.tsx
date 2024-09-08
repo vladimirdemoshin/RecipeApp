@@ -12,8 +12,5 @@ export default function RecipePreview({
                 <div>{"Test description"}</div>
             </div>
         </Link>
-    //     <button className={styles.recipe_preview} >
-        
-    // </button>
     );
 }
