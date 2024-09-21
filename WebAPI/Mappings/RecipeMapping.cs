@@ -9,5 +9,13 @@ namespace RecipeApp.WebAPI.Mappings
         {
             return new RecipeModel(recipeEntity.RecipeId, recipeEntity.Title);
         }
+
+        public static RecipeEntity MapFrom(AddRecipeModel recipeModel)
+        {
+            return new RecipeEntity
+            {
+                Title = recipeModel.Title,
+            };
+        }
     }
 }

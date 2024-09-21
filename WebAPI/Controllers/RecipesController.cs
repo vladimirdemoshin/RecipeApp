@@ -35,5 +35,13 @@ namespace RecipeApp.WebAPI.Controllers
             var data = RecipeMapping.MapFrom(entity);
             return Ok(data);
         }
+
+        [HttpPost("add")]
+        public async Task<IActionResult> PostAsync([FromBody] AddRecipeModel model)
+        {
+            var entity = RecipeMapping.MapFrom(model);
+            await _recipeRepository.AddAsync(entity);
+            return Ok();
+        }
     }
 }

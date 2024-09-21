@@ -7,5 +7,7 @@ namespace DataAccess.Repositories
         Task<IEnumerable<RecipeEntity>> GetAllAsync();
 
         Task<RecipeEntity?> GetAsync(int id);
+
+        Task AddAsync(RecipeEntity entity);
     }
 }

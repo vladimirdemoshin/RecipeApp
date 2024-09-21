@@ -1,3 +1,4 @@
+import { json } from "stream/consumers";
 
 
 export async function fetchRecipes() {
@@ -18,14 +19,13 @@ export async function fetchRecipe(recipeId: string) {
     return json;
 }
 
-export async function addRecipe() {
-    const data = {
-        Title: 'Test title'
-    };
-    const response = await fetch("http://localhost:57017/api/Recipe", {
-        mode: 'no-cors',
+export async function addRecipe(formData: FormData) {
+    const response = await fetch("http://localhost:5053/api/v1/recipes/add", {
         method: 'POST',
-        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(Object.fromEntries(formData)),
     });
     return response
 }

@@ -18,5 +18,12 @@ namespace DataAccess.Repositories
             var recipe = await context.Recipes.FindAsync(id);
             return recipe;
         }
+
+        public async Task AddAsync(RecipeEntity entity)
+        {
+            using var context = new DataContext();
+            await context.Recipes.AddAsync(entity);
+            context.SaveChanges();
+        }
     }
 }
