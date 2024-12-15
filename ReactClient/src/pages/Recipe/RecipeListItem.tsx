@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-interface RecipeListItemProps { name: string; }
+interface RecipeListItemProps { id: string; name: string; }
 
-export default function RecipeListItem ({name}: RecipeListItemProps) {
+export default function RecipeListItem ({id, name}: RecipeListItemProps) {
     return (
         <div>
-          {name}
+            <Link to={`/recipe/${id}`}>{name}</Link>
         </div>
     );
 }

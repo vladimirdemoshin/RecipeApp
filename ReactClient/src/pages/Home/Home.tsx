@@ -4,9 +4,9 @@ import "./Home.css"
 
 export default function Home () {
     return (
-        <div>
+        <div className="container">
             <div className='header'>
-                <h1>Welcome to React with TypeScript</h1>
+                <h1>Welcome to application</h1>
 
             </div>
             <div className="content">

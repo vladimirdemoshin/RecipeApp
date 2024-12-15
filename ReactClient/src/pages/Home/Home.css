@@ -1,3 +1,15 @@
+.container {
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+}
+
 .header {
     background-color: purple;
+}
+
+.content {
+    background-color: red;
+    align-self: center;
+    width: 50%;
 }

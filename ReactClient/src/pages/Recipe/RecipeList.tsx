@@ -11,8 +11,8 @@ export default function RecipeList () {
         <div>
           <ul>
             {recipes.map(r => 
-                <li>
-                    <RecipeListItem name={r.name}/>
+                <li key={r.id}>
+                    <RecipeListItem id={r.id} name={r.name}/>
                 </li>
             )}
           </ul>
