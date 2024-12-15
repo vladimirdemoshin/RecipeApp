@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import RecipeListItem from "./RecipeListItem";
+import { fetchData } from "../../utility/ApiClient";
 
 export default function RecipeList () {
-    const recipes: Recipe[] = [
-        { id: "1", title: "Pizza" },
-        { id: "2", title: "Pasta" },
-        { id: "3", title: "Gellato" }
-    ];
+    const [recipes, setRecipes] = useState<Recipe[]>([]);
+    const url = `https://localhost:44325/api/v1/recipes`;
+    useEffect(() => {
+        fetchData<Recipe[]>(url)
+            .then((recipe) => setRecipes(recipe))
+            .catch((error) => console.log(error)); 
+    }, []);
+
     return (
         <div>
           <ul>
