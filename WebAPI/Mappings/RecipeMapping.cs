@@ -1,7 +1,7 @@
 ﻿using DataAccess.Entities;
-using RecipeApp.WebAPI.Models;
+using WebAPI.Models;
 
-namespace RecipeApp.WebAPI.Mappings
+namespace WebAPI.Mappings
 {
     public static class RecipeMapping
     {

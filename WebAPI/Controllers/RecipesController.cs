@@ -1,9 +1,9 @@
 ﻿using DataAccess.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using RecipeApp.WebAPI.Mappings;
-using RecipeApp.WebAPI.Models;
+using WebAPI.Mappings;
+using WebAPI.Models;
 
-namespace RecipeApp.WebAPI.Controllers
+namespace WebAPI.Controllers
 {
     [Route("api/v1/recipes")]
     [ApiController]

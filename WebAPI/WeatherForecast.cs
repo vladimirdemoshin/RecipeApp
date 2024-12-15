@@ -1,4 +1,4 @@
-namespace RecipeApp.WebAPI
+namespace WebAPI
 {
     public class WeatherForecast
     {
