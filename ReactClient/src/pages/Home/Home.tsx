@@ -1,11 +1,11 @@
 import React from "react";
 import RecipeList from "../Recipe/RecipeList";
-import styles from "./Home.module.css"
+import "./Home.css"
 
 export default function Home () {
     return (
         <div>
-            <div className={styles.header}>
+            <div className='header'>
                 <h1>Welcome to React with TypeScript</h1>
 
             </div>
