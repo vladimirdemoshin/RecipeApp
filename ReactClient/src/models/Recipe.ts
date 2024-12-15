@@ -1,1 +1,1 @@
-type Recipe = { id: string; name: string;};
+type Recipe = { id: string; title: string;};

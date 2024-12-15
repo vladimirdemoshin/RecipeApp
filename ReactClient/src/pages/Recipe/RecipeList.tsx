@@ -3,16 +3,16 @@ import RecipeListItem from "./RecipeListItem";
 
 export default function RecipeList () {
     const recipes: Recipe[] = [
-        { id: "1", name: "Pizza" },
-        { id: "2", name: "Pasta" },
-        { id: "3", name: "Gellato" }
+        { id: "1", title: "Pizza" },
+        { id: "2", title: "Pasta" },
+        { id: "3", title: "Gellato" }
     ];
     return (
         <div>
           <ul>
             {recipes.map(r => 
                 <li key={r.id}>
-                    <RecipeListItem id={r.id} name={r.name}/>
+                    <RecipeListItem id={r.id} name={r.title}/>
                 </li>
             )}
           </ul>
