@@ -1,0 +1,7 @@
+.add-form {
+    display: flex;
+}
+
+.add-form label {
+    flex-direction: column;
+}

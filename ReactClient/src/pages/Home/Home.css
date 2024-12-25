@@ -1,15 +1,22 @@
 .container {
-    background-color: aqua;
     display: flex;
     flex-direction: column;
 }
 
 .header {
-    background-color: purple;
+    background-color: lightsalmon;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .content {
-    background-color: red;
+    display: flex;
+    justify-content: center;
+}
+
+.recipe-list {
+    background-color: lightgreen;
     align-self: center;
     width: 50%;
 }
