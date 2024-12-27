@@ -11,7 +11,7 @@ export const fetchData = async <T>(url: string): Promise<T> => {
     }
 };
 
-export const addRecipe = async (data: {title: string; description: string}): Promise<void> => {
+export const addRecipe = async (data: AddRecipeModel): Promise<void> => {
   const url = `https://localhost:44325/api/v1/recipes/add`;
   await fetch(url, { 
     method: 'POST', 

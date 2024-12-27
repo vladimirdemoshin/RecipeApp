@@ -1,4 +1,4 @@
 ﻿namespace WebAPI.Models
 {
-    public record AddRecipeModel(string Title, string Description);
+    public record AddRecipeModel(string Title, string Description, RecipeStepModel[] Steps);
 }

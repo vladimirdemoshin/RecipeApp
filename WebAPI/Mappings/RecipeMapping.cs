@@ -12,9 +12,17 @@ namespace WebAPI.Mappings
 
         public static RecipeEntity MapFrom(AddRecipeModel recipeModel)
         {
+            var steps = new List<RecipeStepEntity>();
+            var stepModels = recipeModel.Steps;
+            for (int index = 0; index < stepModels.Length; index++)
+            {
+                steps.Add(RecipeStepMapping.MapFrom(index, stepModels[index]));
+            }
+
             return new RecipeEntity
             {
                 Title = recipeModel.Title,
+                Steps = steps,
             };
         }
     }
