@@ -12,8 +12,10 @@ export default function RecipePage () {
             .catch((error) => console.log(error)); 
     }, []);
 
-    const steps = [{ index: 1 }, { index: 2 }, { index: 3 }]; // todo
-    const ingridients = [ { name: "salmon" }, { name: "sour cream" }, { name: "salt" }, { name: "pasta penne" } ];
+    const steps = recipe?.steps || [];
+
+    // todo
+    // const ingridients = [ { name: "salmon" }, { name: "sour cream" }, { name: "salt" }, { name: "pasta penne" } ];
 
     return (
         recipe ? 
@@ -26,7 +28,7 @@ export default function RecipePage () {
                     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </div>
 
-                <div>
+                {/* <div>
                     <h2>Ingridients:</h2>
                     <div>
                         {ingridients.map(i => {
@@ -35,14 +37,14 @@ export default function RecipePage () {
                             );
                         })}
                     </div>
-                </div>
+                </div> */}
 
-                {steps.map(x => {
+                {steps.map((s, index) => {
                     return (
                         <div>
-                            <h3>Step {x.index}</h3>
+                            <h3>Step {index + 1}</h3>
                             <div>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                                {s.details}
                             </div>
                         </div>
                     );

@@ -20,7 +20,7 @@ namespace WebAPI.Controllers
         public async Task<IEnumerable<RecipeModel>> GetAllAsync()
         {
             var entities = await _recipeRepository.GetAllAsync();
-            var data = entities.Select(RecipeMapping.MapFrom).ToList();
+            var data = entities.Select(e => RecipeMapping.MapFrom(e)).ToList();
             return data;
         }
 
@@ -28,11 +28,7 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> GetAsync([FromRoute] int id)
         {
             var entity = await _recipeRepository.GetAsync(id);
-            if (entity == null)
-            {
-                return NotFound();
-            }
-            var data = RecipeMapping.MapFrom(entity);
+            var data = RecipeMapping.MapFrom(entity, true);
             return Ok(data);
         }
 

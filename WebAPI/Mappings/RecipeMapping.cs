@@ -5,9 +5,13 @@ namespace WebAPI.Mappings
 {
     public static class RecipeMapping
     {
-        public static RecipeModel MapFrom(RecipeEntity recipeEntity)
+        public static RecipeModel MapFrom(RecipeEntity recipeEntity, bool includeSteps = false)
         {
-            return new RecipeModel(recipeEntity.RecipeId, recipeEntity.Title);
+            var steps = includeSteps ? recipeEntity.Steps
+                .OrderBy(s => s.StepIndex)
+                .Select(s => RecipeStepMapping.MapFrom(s))
+                .ToArray() : [];
+            return new RecipeModel(recipeEntity.RecipeId, recipeEntity.Title, steps);
         }
 
         public static RecipeEntity MapFrom(AddRecipeModel recipeModel)

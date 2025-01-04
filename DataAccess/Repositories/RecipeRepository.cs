@@ -13,10 +13,13 @@ namespace DataAccess.Repositories
             return recipes;
         }
 
-        public async Task<RecipeEntity?> GetAsync(int id)
+        public async Task<RecipeEntity> GetAsync(int id)
         {
             using var context = new DataContext();
-            var recipe = await context.Recipes.FindAsync(id);
+            var recipe = await context.Recipes
+                .Where(r => r.RecipeId == id)
+                .Include(r => r.Steps)
+                .FirstAsync();
             return recipe;
         }
 

@@ -13,5 +13,10 @@ namespace WebAPI.Mappings
                 Details = recipeModel.Details,
             };
         }
+
+        public static RecipeStepModel MapFrom(RecipeStepEntity entity)
+        {
+            return new RecipeStepModel(entity.Details);
+        }
     }
 }
