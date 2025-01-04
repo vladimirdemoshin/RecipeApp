@@ -9,9 +9,9 @@ namespace WebAPI.Mappings
         {
             var steps = includeSteps ? recipeEntity.Steps
                 .OrderBy(s => s.StepIndex)
-                .Select(s => RecipeStepMapping.MapFrom(s))
+                .Select(RecipeStepMapping.MapFrom)
                 .ToArray() : [];
-            return new RecipeModel(recipeEntity.RecipeId, recipeEntity.Title, steps);
+            return new RecipeModel(recipeEntity.RecipeId, recipeEntity.Title, recipeEntity.Description, steps);
         }
 
         public static RecipeEntity MapFrom(AddRecipeModel recipeModel)
@@ -26,6 +26,7 @@ namespace WebAPI.Mappings
             return new RecipeEntity
             {
                 Title = recipeModel.Title,
+                Description = recipeModel.Description,
                 Steps = steps,
             };
         }

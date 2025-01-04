@@ -1,4 +1,4 @@
 ﻿namespace WebAPI.Models
 {
-    public record RecipeModel(int Id, string Title, IEnumerable<RecipeStepModel> Steps);
+    public record RecipeModel(int Id, string Title, string Description, IEnumerable<RecipeStepModel> Steps);
 }

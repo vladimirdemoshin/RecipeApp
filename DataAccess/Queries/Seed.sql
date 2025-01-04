@@ -1,7 +1,5 @@
 INSERT INTO Recipes
 VALUES
-('Pizza'),
-('Pasta with salmon'),
-('Fries'),
-('Mashed potatoes'),
-('Banana ice cream')
+('Pizza', 'Pizza description'),
+('Pasta with salmon', 'Delicious creamy pasta'),
+('Fries', 'Crispy fries')
