@@ -1,0 +1,8 @@
+.language-select-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.language-select-container select {
+    height: fit-content;
+}
