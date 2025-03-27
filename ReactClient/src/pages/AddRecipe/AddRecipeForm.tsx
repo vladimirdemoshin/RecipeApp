@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { addRecipe } from "../../utility/ApiClient";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "state/store";
+import { getText } from "../../utility/LanguageManager";
+import { LanguageTextCode } from "../../models/LanguageTextCode";
 
 export default function AddRecipeForm () {
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
     const [currentSteps, setCurrentSteps] = useState<string[]>([]);
     const [currentStepDescription, setCurrentStepDescription] = useState('');
+    const language = useSelector((state: RootState) => state.language.value);
 
     const navigate = useNavigate();
 
@@ -24,7 +29,7 @@ export default function AddRecipeForm () {
             navigate('/');
         }}>
             <div>
-                <label>Enter name of recipe
+                <label>{getText(LanguageTextCode.EnterNameRecipe, language)}
                     <input 
                         type="text" 
                         name="title" 
