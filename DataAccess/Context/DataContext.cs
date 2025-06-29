@@ -3,15 +3,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Context
 {
-    public class DataContext : DbContext
+    public class DataContext(string connectionString) : DbContext
     {
         public DbSet<RecipeEntity> Recipes { get; set; }
 
         public DbSet<RecipeStepEntity> RecipeSteps { get; set; }
 
-        public DataContext()
-        {
-        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<RecipeEntity>()
@@ -30,7 +27,6 @@ namespace DataAccess.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionString = "todo";
             optionsBuilder.UseSqlServer(connectionString);
         }
     }

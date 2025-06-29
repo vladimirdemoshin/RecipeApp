@@ -1,6 +1,10 @@
+using Contract.Options;
 using DataAccess.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.Configure<DataAccessOptions>(
+    builder.Configuration.GetSection("DataAccessOptions"));
 
 // Add services to the container.
 builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
