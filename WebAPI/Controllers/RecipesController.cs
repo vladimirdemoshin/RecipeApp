@@ -1,4 +1,5 @@
 ﻿using DataAccess.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Mappings;
 using WebAPI.Models;
@@ -17,8 +18,10 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IEnumerable<RecipeModel>> GetAllAsync()
         {
+            var user = HttpContext.User;
             var entities = await _recipeRepository.GetAllAsync();
             var data = entities.Select(e => RecipeMapping.MapFrom(e)).ToList();
             return data;
