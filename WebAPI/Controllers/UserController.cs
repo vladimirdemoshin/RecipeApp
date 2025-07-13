@@ -5,17 +5,40 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using WebAPI.Models.Auth;
+using WebAPI.Utilities;
 
 namespace WebAPI.Controllers
 {
-    [Route("api/v1/")]
+    [Route("api/v1/user")]
     [ApiController]
-    public class AuthController (IOptions<JwtSettings> jwtSettings) : ControllerBase
+    public class UserController (IOptions<JwtSettings> jwtSettings) : ControllerBase
     {
+        [HttpPost("create")]
+        public IActionResult Create([FromBody] LoginModel model)
+        {
+            var user = new UserModel
+            {
+                Username = model.Username
+            };
+
+            AuthUtility.CreatePasswordHash(model.Password, out byte[] hash, out byte[] salt);
+            user.PasswordHash = hash;
+            user.PasswordSalt = salt;
+
+            // TODO save user in database
+
+            return Ok();
+        }
+
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginModel model)
         {
-            if (model.Username == "testuser" && model.Password == "password123") // TODO
+            // TODO get user from database
+
+            string passwordHash = "TODO";
+            string passwordSalt = "TODO";
+
+            if (AuthUtility.VerifyPassword(model.Password, passwordHash, passwordSalt)) // TODO
             {
                 var token = GenerateJwtToken(model.Username);
                 return Ok(new { token });
