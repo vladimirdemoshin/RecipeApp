@@ -5,12 +5,17 @@ namespace DataAccess.Context
 {
     public class DataContext(string connectionString) : DbContext
     {
+        public DbSet<UserEntity> Users { get; set; }
+
         public DbSet<RecipeEntity> Recipes { get; set; }
 
         public DbSet<RecipeStepEntity> RecipeSteps { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<UserEntity>()
+                .HasKey(c => new { c.Id });
+
             modelBuilder.Entity<RecipeEntity>()
                 .HasKey(c => new { c.RecipeId });
 
