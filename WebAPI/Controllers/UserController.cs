@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataAccess.Entities;
+using DataAccess.Repositories;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -11,34 +13,30 @@ namespace WebAPI.Controllers
 {
     [Route("api/v1/user")]
     [ApiController]
-    public class UserController (IOptions<JwtSettings> jwtSettings) : ControllerBase
+    public class UserController (IUserRepository userRepository, IOptions<JwtSettings> jwtSettings) : ControllerBase
     {
         [HttpPost("create")]
-        public IActionResult Create([FromBody] LoginModel model)
+        public async Task<IActionResult> CreateAsync([FromBody] LoginModel model)
         {
-            var user = new UserModel
-            {
-                Username = model.Username
-            };
-
             AuthUtility.CreatePasswordHash(model.Password, out byte[] hash, out byte[] salt);
-            user.PasswordHash = hash;
-            user.PasswordSalt = salt;
 
-            // TODO save user in database
+            var user = new UserEntity
+            {
+                Username = model.Username,
+                PasswordHash = hash,
+                PasswordSalt = salt,
+            };
+            await userRepository.AddAsync(user);
 
             return Ok();
         }
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginModel model)
+        public async Task<IActionResult> LoginAsync([FromBody] UserModel model)
         {
-            // TODO get user from database
+            var user = await userRepository.GetAsync(model.Id);
 
-            string passwordHash = "TODO";
-            string passwordSalt = "TODO";
-
-            if (AuthUtility.VerifyPassword(model.Password, passwordHash, passwordSalt)) // TODO
+            if (AuthUtility.VerifyPassword(model.Password, user.PasswordHash, user.PasswordSalt))
             {
                 var token = GenerateJwtToken(model.Username);
                 return Ok(new { token });

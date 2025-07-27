@@ -14,6 +14,7 @@ builder.Services.Configure<JwtSettings>(
 
 // Add services to the container.
 builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 if (builder.Environment.IsDevelopment())
 {
