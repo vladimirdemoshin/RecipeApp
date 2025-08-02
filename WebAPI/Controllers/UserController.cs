@@ -34,7 +34,7 @@ namespace WebAPI.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> LoginAsync([FromBody] UserModel model)
         {
-            var user = await userRepository.GetAsync(model.Id);
+            var user = await userRepository.GetAsync(model.Username);
 
             if (AuthUtility.VerifyPassword(model.Password, user.PasswordHash, user.PasswordSalt))
             {
@@ -49,7 +49,7 @@ namespace WebAPI.Controllers
         {
             var claims = new[]
             {
-                new Claim(ClaimTypes.Name, username),
+                new Claim(JwtRegisteredClaimNames.Name, username),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 

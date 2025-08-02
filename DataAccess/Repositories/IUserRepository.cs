@@ -6,6 +6,6 @@ namespace DataAccess.Repositories
     {
         Task AddAsync(UserEntity user);
 
-        Task<UserEntity> GetAsync(int userId);
+        Task<UserEntity> GetAsync(string username);
     }
 }

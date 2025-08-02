@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import languageReducer from './language/languageSlice'
+import tokenReducer from './token/tokenSlice'
 
 export const store = configureStore({
   reducer: {
-    language: languageReducer
+    language: languageReducer,
+    token: tokenReducer,
   },
 });
 

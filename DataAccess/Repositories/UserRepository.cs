@@ -17,11 +17,11 @@ namespace DataAccess.Repositories
             context.SaveChanges();
         }
 
-        public async Task<UserEntity> GetAsync(int userId)
+        public async Task<UserEntity> GetAsync(string username)
         {
             using var context = new DataContext(_connectionString);
             var user = await context.Users
-                .Where(r => r.Id == userId)
+                .Where(r => r.Username == username)
                 .FirstAsync();
             return user;
         }
