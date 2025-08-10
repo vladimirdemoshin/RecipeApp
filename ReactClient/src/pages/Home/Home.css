@@ -3,13 +3,6 @@
     flex-direction: column;
 }
 
-.header {
-    background-color: lightsalmon;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
 .content {
     display: flex;
     justify-content: center;

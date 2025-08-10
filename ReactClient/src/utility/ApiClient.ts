@@ -37,6 +37,7 @@ export const login = async (data: LoginModel): Promise<{ token: string }> => {
   const url = `https://localhost:44325/api/v1/user/login`;
   let response = await fetch(url, { 
     method: 'POST', 
+    credentials: 'include',
     headers: {
        'Content-Type': 'application/json', 
     }, 
