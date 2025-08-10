@@ -3,6 +3,7 @@ using DataAccess.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using WebAPI.Models;
 using WebAPI.Models.Auth;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,9 +24,10 @@ if (builder.Environment.IsDevelopment())
         options.AddPolicy("AllowLocalhost",
             builder =>
             {
-                builder.AllowAnyOrigin()
+                builder.WithOrigins("http://localhost:9000")
                        .AllowAnyMethod()
-                       .AllowAnyHeader();
+                       .AllowAnyHeader()
+                       .AllowCredentials();
             });
     });
 }
@@ -34,6 +36,18 @@ var jwtSettings = builder.Configuration.GetSection("JwtSettings");
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         .AddJwtBearer(options =>
         {
+            options.Events = new JwtBearerEvents
+            {
+                OnMessageReceived = context =>
+                {
+                    var token = context.Request.Cookies[Constants.AuthTokenCookieName];
+                    if (!string.IsNullOrEmpty(token))
+                    {
+                        context.Token = token;
+                    }
+                    return Task.CompletedTask;
+                }
+            };
             options.TokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuer = true,

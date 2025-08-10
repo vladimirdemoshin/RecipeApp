@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using WebAPI.Models;
 using WebAPI.Models.Auth;
 using WebAPI.Utilities;
 
@@ -39,6 +40,14 @@ namespace WebAPI.Controllers
             if (AuthUtility.VerifyPassword(model.Password, user.PasswordHash, user.PasswordSalt))
             {
                 var token = GenerateJwtToken(model.Username);
+                var cookieOptions = new CookieOptions
+                {
+                    HttpOnly = true,
+                    Secure = true,
+                    SameSite = SameSiteMode.None,
+                    Expires = DateTimeOffset.UtcNow.AddMinutes(15)
+                };
+                Response.Cookies.Append(Constants.AuthTokenCookieName, token, cookieOptions);
                 return Ok(new { token });
             }
 
