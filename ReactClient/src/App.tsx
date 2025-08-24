@@ -1,17 +1,17 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home/Home';
 import RecipePage from './pages/Recipe/RecipePage';
 import AddRecipePage from './pages/AddRecipe/AddRecipePage';
 import SignUpPage from './pages/User/SignUpPage';
 import LoginPage from './pages/User/LoginPage';
+import RecipesPage from './pages/Recipes/RecipesPage';
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
       <div className='App'>
         <Routes>
-          <Route path='/' element={<Home/>} />
+          <Route path='/' element={<RecipesPage/>} />
           <Route path="/signup/" element={<SignUpPage />} />
           <Route path="/login/" element={<LoginPage />} />
           <Route path="/recipe/:id" element={<RecipePage />} />

@@ -23,7 +23,6 @@ export default function Header () {
                 <LanguageSelector/>
                 <h1>Recipe app</h1>
             </div>
-            <AddRecipeButton/>
             {
                 username === null ? 
                     <LoginButton/> :

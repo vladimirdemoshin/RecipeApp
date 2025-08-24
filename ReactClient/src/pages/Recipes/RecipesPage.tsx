@@ -1,9 +1,10 @@
 import React from "react";
 import RecipeList from "../Recipe/RecipeList";
-import "./Home.css"
+import AddRecipeButton from "../../pages/AddRecipe/AddRecipeButton";
+import "./RecipesPage.css"
 import Header from "../../components/Header/Header";
 
-export default function Home () {
+export default function RecipesPage () {
     return (
         <div className="container">
             <Header/>
@@ -13,6 +14,7 @@ export default function Home () {
                     <RecipeList/>
                 </div>
                 <div>
+                    <AddRecipeButton/>
                 </div>
             </div>
         </div>
