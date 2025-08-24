@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./Header.css"
 import LanguageSelector from '../../components/shared/LanguageSelector/LanguageSelector'
 import AddRecipeButton from "../../pages/AddRecipe/AddRecipeButton";
-import SignUpButton from "../../pages/User/SignUpButton";
 import LoginButton from "../../pages/User/LoginButton";
 import { getMyInfo } from "../../api/me/client";
 
@@ -25,7 +24,6 @@ export default function Header () {
                 <h1>Recipe app</h1>
             </div>
             <AddRecipeButton/>
-            <SignUpButton/>
             {
                 username === null ? 
                     <LoginButton/> :

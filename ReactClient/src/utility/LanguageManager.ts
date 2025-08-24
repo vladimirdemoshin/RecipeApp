@@ -18,6 +18,8 @@ function getRussianText(code: LanguageTextCode): string {
             return "Русский";
         case LanguageTextCode.English:
             return "Английский";
+        case LanguageTextCode.SignUp:
+            return "Зарегистрироваться";
         case LanguageTextCode.AddNewRecipe:
             return "Добавить новый рецепт";
         case LanguageTextCode.EnterNameRecipe:
@@ -34,6 +36,8 @@ function getEnglishText(code: LanguageTextCode): string {
             return "Russian";
         case LanguageTextCode.English:
             return "English";
+        case LanguageTextCode.SignUp:
+            return "Sign up";
         case LanguageTextCode.AddNewRecipe:
             return "Add new recipe";
         case LanguageTextCode.EnterNameRecipe:
