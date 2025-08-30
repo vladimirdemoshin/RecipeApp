@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Header.css"
 import LanguageSelector from '../../components/shared/LanguageSelector/LanguageSelector'
-import AddRecipeButton from "../../pages/AddRecipe/AddRecipeButton";
 import LoginButton from "../../pages/User/LoginButton";
 import { getMyInfo } from "../../api/me/client";
 
@@ -20,16 +19,18 @@ export default function Header () {
     return (
         <div className='header'>
             <div>
-                <LanguageSelector/>
                 <h1>Recipe app</h1>
             </div>
-            {
-                username === null ? 
-                    <LoginButton/> :
-                    <div>
-                        <span>Welcome {username}</span>
-                    </div>
-            }
+            <div>
+                <LanguageSelector/>
+                {
+                    username === null ? 
+                        <LoginButton/> :
+                        <div>
+                            <span>Welcome {username}</span>
+                        </div>
+                }
+            </div>
         </div>
     );
 }
