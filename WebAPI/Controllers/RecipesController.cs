@@ -1,5 +1,4 @@
 ﻿using DataAccess.Repositories;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Mappings;
 using WebAPI.Models;
@@ -18,7 +17,6 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public async Task<IEnumerable<RecipeModel>> GetAllAsync()
         {
             var user = HttpContext.User;
@@ -28,7 +26,6 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize]
         public async Task<IActionResult> GetAsync([FromRoute] int id)
         {
             var entity = await _recipeRepository.GetAsync(id);
@@ -37,7 +34,6 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        [Authorize]
         public async Task<IActionResult> PostAsync([FromBody] AddRecipeModel model)
         {
             var entity = RecipeMapping.MapFrom(model);

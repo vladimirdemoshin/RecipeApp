@@ -1,5 +1,5 @@
 # RecipeApp
 Web site for managing recipes
 Backend: ASP.NET Core WebAPI
-Frontend: Next.js
+Frontend: React.js
 DB: MS SQL Server
